@@ -2,8 +2,8 @@
 This ROS package illustrates how to subscribe and publish messages on ROS
 
 ### Dependencies
-The package assumes that **ROS Kinetic** is installed.
-Cmake minimum version - 2.8.3 
+The package assumes that **ROS Kinetic** is installed.  
+Cmake minimum version - 2.8.3   
 
 ### Build the project
 
@@ -15,7 +15,7 @@ catkin_make
 ```
 #### Add package to ROS workspace
 ```
-. ~/beginner_tutorials/Publish_Subscriber_pkg/devel/setup.bash
+. ~/beginner_tutorials/devel/setup.bash
 ```
 
 ### Run the Package
