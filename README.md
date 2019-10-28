@@ -9,7 +9,7 @@ Cmake minimum version - 2.8.3
 
 ```
 cd ~/
-git clone https://github.com/mesneym/beginner_tutorials.git'
+git clone 'https://github.com/mesneym/beginner_tutorials.git'
 cd beginner_tutorials/
 catkin_make
 ```
