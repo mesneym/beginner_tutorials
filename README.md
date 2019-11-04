@@ -42,19 +42,19 @@ rosrun beginner_tutorials listener
 ```
 Press ctrl-c to terminate both listner and subscriber
 
-##### Starting both publish and subscriber using Roslaunch (Optional)
+#### Starting both publish and subscriber using Roslaunch(optional) 
 On a new terminal, Add package to ROS workspace and enter specified   
-freq(display frequency) and launch  
-application. For eg
+freq(display frequency) and launch  application. For eg
 
 ```
 cd ~/catkin_ws/
 roslaunch beginner_tutorials beginner_tutorials.launch freq:="10"
 ```
 
-#### Stating Service
+#### Starting Service
 On a new terminal, Add package to ROS workspacke and start service with  
-the following
+the instructions below. For Eg, to perfom integer over interger division  
+with 4 and 2 as operands, enter the following.
 ```
 rosservice call /divide_two_nums 4 2
 ```
