@@ -35,16 +35,15 @@
  * @return boolean - returns true for successful operation
  */
 bool divide(beginner_tutorials::DivideTwoNum::Request  &req,
-         beginner_tutorials::DivideTwoNum::Response &res)
-{
-     if(req.b == 0) 
-	   ROS_FATAL_STREAM("dividing by zero");
-     res.result = req.a / req.b; // perfoming int over int division
-	 ROS_WARN_STREAM("precision may be lost from int over int division");
-	 
-	 //print both operands and result
-     ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
-     ROS_INFO("sending back response: [%ld]", (long int)res.result);
+         beginner_tutorials::DivideTwoNum::Response &res) {
+     if (req.b == 0)
+       ROS_FATAL_STREAM("dividing by zero");
+     res.result = req.a / req.b;  // perfoming int over int division
+     ROS_WARN_STREAM("precision may be lost from int over int division");
+
+     // print both operands and result
+     ROS_INFO("request: x=%ld, y=%ld", (int64)req.a, (int64)req.b);
+     ROS_INFO("sending back response: [%ld]", (int64)res.result);
      return true;
 }
 
@@ -52,7 +51,6 @@ bool divide(beginner_tutorials::DivideTwoNum::Request  &req,
   * This tutorial demonstrates simple sending of messages over the ROS system.
   */
 int main(int argc, char **argv) {
-
    /**
 	* The ros::init() function needs to see argc and argv so that it can perform
 	* any ROS arguments and name remapping that were provided at the command line.
@@ -88,23 +86,24 @@ ros::NodeHandle n;
 	* buffer up before throwing some away.
 	*/
 ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
-ros::ServiceServer service = n.advertiseService("divide_two_nums",divide);
+ros::ServiceServer service = n.advertiseService("divide_two_nums", divide);
 ROS_INFO_STREAM("Ready to perform Division operation");
 
 int frequency =  atoi(argv[1]);
-if(frequency < 0){  // frequencies can't be negative
-    ROS_ERROR_STREAM("Negative display frequency"); 
-	frequency = 10; //resetting frequency to default
+if(frequency < 0) {  // frequencies can't be negative
+    ROS_ERROR_STREAM("Negative display frequency");
+    frequency = 10;  // resetting frequency to default
 }
 
-ros::Rate loop_rate(frequency); //display rate
+
+ros::Rate loop_rate(frequency);  // display rate
 
    /**
 	* A count of how many messages we have sent. This is used to create
 	* a unique string for each message.
 	*/
 int count = 0;
-  while (ros::ok()) {
+while (ros::ok()) {
 	 /**
 	  * This is a message object. You stuff it with data, and then publish it.
 	  */
@@ -112,8 +111,8 @@ int count = 0;
     std::stringstream ss;
     ss << "ENPM 808X " << count;
     msg.data = ss.str();
-	ROS_INFO_STREAM("" << msg.data.c_str());
-	ROS_DEBUG_STREAM("display frequency " << frequency);
+    ROS_INFO_STREAM("" << msg.data.c_str());
+    ROS_DEBUG_STREAM("display frequency " << frequency);
 
 	 /**
 	  * The publish() function is how you send messages. The parameter
