@@ -25,10 +25,10 @@
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
-#include "publish_subscriber/AddTwoNum.h"
+#include "beginner_tutorials/AddTwoNum.h"
 
-bool add(publish_subscriber::AddTwoNum::Request  &req,
-         publish_subscriber::AddTwoNum::Response &res)
+bool add(beginner_tutorials::AddTwoNum::Request  &req,
+         beginner_tutorials::AddTwoNum::Response &res)
 {
      res.sum = req.a + req.b;
      ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
