@@ -25,14 +25,26 @@
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
-#include "beginner_tutorials/AddTwoNum.h"
+#include "beginner_tutorials/DivideTwoNum.h"
 
-bool add(beginner_tutorials::AddTwoNum::Request  &req,
-         beginner_tutorials::AddTwoNum::Response &res)
+
+/**
+ * @brief divide -perfoms division operation
+ * @param req - contains operands for division
+ * @param res - stores result of division operation
+ * @return boolean - returns true for successful operation
+ */
+bool divide(beginner_tutorials::DivideTwoNum::Request  &req,
+         beginner_tutorials::DivideTwoNum::Response &res)
 {
-     res.sum = req.a + req.b;
+     if(req.b == 0) 
+	   ROS_FATAL_STREAM("dividing by zero");
+     res.result = req.a / req.b; // perfoming int over int division
+	 ROS_WARN_STREAM("precision may be lost from int over int division");
+	 
+	 //print both operands and result
      ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
-     ROS_INFO("sending back response: [%ld]", (long int)res.sum);
+     ROS_INFO("sending back response: [%ld]", (long int)res.result);
      return true;
 }
 
@@ -76,10 +88,17 @@ ros::NodeHandle n;
 	* buffer up before throwing some away.
 	*/
 ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
-ros::ServiceServer service = n.advertiseService("add_two_nums",add);
-ROS_INFO("Ready to add two ints.");
+ros::ServiceServer service = n.advertiseService("divide_two_nums",divide);
+ROS_INFO_STREAM("Ready to perform Division operation");
 
-ros::Rate loop_rate(10);
+int frequency =  atoi(argv[1]);
+if(frequency < 0){  // frequencies can't be negative
+    ROS_ERROR_STREAM("Negative display frequency"); 
+	frequency = 10; //resetting frequency to default
+}
+
+ros::Rate loop_rate(frequency); //display rate
+
    /**
 	* A count of how many messages we have sent. This is used to create
 	* a unique string for each message.
@@ -93,7 +112,9 @@ int count = 0;
     std::stringstream ss;
     ss << "ENPM 808X " << count;
     msg.data = ss.str();
-    ROS_INFO("%s", msg.data.c_str());
+	ROS_INFO_STREAM("" << msg.data.c_str());
+	ROS_DEBUG_STREAM("display frequency " << frequency);
+
 	 /**
 	  * The publish() function is how you send messages. The parameter
 	  * is the message object. The type of this object must agree with the type
@@ -107,7 +128,5 @@ int count = 0;
     loop_rate.sleep();
     ++count;
   }
-
-
   return 0;
 }

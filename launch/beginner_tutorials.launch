@@ -1,0 +1,5 @@
+<launch>
+ <arg name="freq" default="10"/>
+ <node pkg="beginner_tutorials" type="talker" name="talker" args="$(arg freq)"/>
+ <node pkg="beginner_tutorials" type="listener" name="listener"/>
+</launch>
