@@ -43,19 +43,33 @@ rosrun beginner_tutorials listener
 Press ctrl-c to terminate both listner and subscriber
 
 #### Starting both publish and subscriber using Roslaunch(optional) 
-On a new terminal, Add package to ROS workspace and enter specified   
+On a new terminal, Add package to ROS workspace, enter specified   
 freq(display frequency) and launch  application. For eg
 
 ```
 cd ~/catkin_ws/
-roslaunch beginner_tutorials beginner_tutorials.launch freq:="10"
+roslaunch beginner_tutorials beginner_tutorials.launch freq:="Integer Value"
 ```
+If the frequency argument is not specified, the default frequency
+value(10) is utilized
 
-#### Starting Service
+#### Calling Service
 On a new terminal, Add package to ROS workspacke and start service with  
 the instructions below. For Eg, to perfom integer over interger division  
 with 4 and 2 as operands, enter the following.
 ```
 rosservice call /divide_two_nums 4 2
 ```
- 
+
+### Rqt Console
+To launch Rqt Console, open a new terminal and enter the instruction given  
+below
+
+```
+rosrun rqt_console rqt_console
+```
+open a new terminal and enter the following
+
+```
+rosrun rqt_logger_level rqt_logger_level
+```
