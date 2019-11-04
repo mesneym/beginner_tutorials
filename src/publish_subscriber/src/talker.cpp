@@ -25,10 +25,22 @@
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "publish_subscriber/AddTwoNum.h"
+
+bool add(publish_subscriber::AddTwoNum::Request  &req,
+         publish_subscriber::AddTwoNum::Response &res)
+{
+     res.sum = req.a + req.b;
+     ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
+     ROS_INFO("sending back response: [%ld]", (long int)res.sum);
+     return true;
+}
+
  /**
   * This tutorial demonstrates simple sending of messages over the ROS system.
   */
 int main(int argc, char **argv) {
+
    /**
 	* The ros::init() function needs to see argc and argv so that it can perform
 	* any ROS arguments and name remapping that were provided at the command line.
@@ -64,6 +76,9 @@ ros::NodeHandle n;
 	* buffer up before throwing some away.
 	*/
 ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+ros::ServiceServer service = n.advertiseService("add_two_nums",add);
+ROS_INFO("Ready to add two ints.");
+
 ros::Rate loop_rate(10);
    /**
 	* A count of how many messages we have sent. This is used to create
