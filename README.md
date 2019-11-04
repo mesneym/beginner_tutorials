@@ -8,14 +8,15 @@ Cmake minimum version - 2.8.3
 ### Build the project
 
 ```
-cd ~/
+mkdir ~/catkin_ws/src
+cd ~/catkin_ws/src
 git clone 'https://github.com/mesneym/beginner_tutorials.git'
-cd beginner_tutorials/
+cd  ~/catkin_ws 
 catkin_make
 ```
 #### Add package to ROS workspace
 ```
-. ~/beginner_tutorials/devel/setup.bash
+. ~/catkin_ws/devel/setup.bash
 ```
 
 ### Run the Package
@@ -31,12 +32,12 @@ roscore
 #### Start the publisher
 On a new terminal Add package to ROS workspace and start the publisher
 ```
-rosrun publish_subscriber talker
+rosrun beginner_tutorials talker
 ```
 
 #### Start the subscriber
 On a new terminal Add package to ROS workspace and start the subscriber
 ```
-rosrun publish_subscriber listener
+rosrun beginner_tutorials listener
 ```
 Press ctrl-c to terminate both listner and subscriber
