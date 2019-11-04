@@ -41,3 +41,21 @@ On a new terminal Add package to ROS workspace and start the subscriber
 rosrun beginner_tutorials listener
 ```
 Press ctrl-c to terminate both listner and subscriber
+
+##### Starting both publish and subscriber using Roslaunch (Optional)
+On a new terminal, Add package to ROS workspace and enter specified   
+freq(display frequency) and launch  
+application. For eg
+
+```
+cd ~/catkin_ws/
+roslaunch beginner_tutorials beginner_tutorials.launch freq:="10"
+```
+
+#### Stating Service
+On a new terminal, Add package to ROS workspacke and start service with  
+the following
+```
+rosservice call /divide_two_nums 4 2
+```
+ 
