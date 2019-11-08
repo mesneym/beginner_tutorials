@@ -4,10 +4,11 @@
  ## Find catkin and any catkin packages
  find_package(catkin REQUIRED COMPONENTS 
               roscpp 
-			  rospy 
-			  std_msgs 
-			  genmsg
-			  message_generation
+      			  rospy 
+		      	  std_msgs 
+              genmsg
+              message_generation
+              tf
 			 )
  
  ## Declare ROS messages and services

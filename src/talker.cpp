@@ -42,8 +42,8 @@ bool divide(beginner_tutorials::DivideTwoNum::Request  &req,
      ROS_WARN_STREAM("precision may be lost from int over int division");
 
      // print both operands and result
-     ROS_INFO("request: x=%ld, y=%ld", (int64)req.a, (int64)req.b);
-     ROS_INFO("sending back response: [%ld]", (int64)res.result);
+     ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
+     ROS_INFO("sending back response: [%ld]", (long int)res.result);
      return true;
 }
 
