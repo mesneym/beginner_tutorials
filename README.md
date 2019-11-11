@@ -74,6 +74,42 @@ open a new terminal and enter the following
 rosrun rqt_logger_level rqt_logger_level
 ```
 
+### TF
+TF helps get the coordinate transformation between different reference frames.  
+To broadcast frame, open new terminal, add package to workspace and enter the
+instruction given below
+
+Start talker node 
+```
+rosrun beginner_tutorials talker
+```
+
+View matrix representation of frames, enter the following
+```
+rosrun tf tf-echo /world /talker
+```
+This gives the talk coordinates with respect to the world frame   
+
+To get a graphical representation of TF, open a new terminal, add package to 
+workspace and follow the instructions given below
+
+```
+rosrun rqt_tf_tree rqt_tf_tree
+```
+
+To get pdf, open new terminal, add package to workspace and follow the instructions  
+
+Generate pdf by running the following command
+```
+rosrun tf view_frames
+```
+
+View pdf by entering the following
+```
+evince frames.pdf
+```
+
+
 
 ### Record and Play Topics
 To record published messages and play them at a later time, create a new terminal, add   
