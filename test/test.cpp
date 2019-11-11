@@ -31,29 +31,33 @@
  */
 
 #include <sstream>
+#include "tf/transform_broadcaster.h"
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "gtest/gtest.h"
 #include "beginner_tutorials/DivideTwoNum.h"
-#include <tf/transform_broadcaster.h>
-#include <gtest/gtest.h>
 
+/**
+ * @brief Testcase to check divide_two_nums sevice
+ * @param None
+ * @return None
+ */
 TEST(TestSuite, serviceTest) {
   ros::NodeHandle n;
   ros::ServiceClient client =  n.serviceClient<beginner_tutorials::DivideTwoNum>
                                ("divide_two_nums");
-  
-  beginner_tutorials::DivideTwoNum srv;
-  srv.request.a = 1;
+  beginner_tutorials::DivideTwoNum srv;  // Performs integer division
+  srv.request.a = 1;                     // 1/2 should return 0
   srv.request.b = 2;
 
-  EXPECT_EQ(0,(int)srv.response.result);
+  EXPECT_EQ(0, (int)srv.response.result);
 }
 
 /**
   * This tutorial demonstrates a simple test for ROS
   */
-int main(int argc, char **argv){
- ros::init(argc, argv, "tester");
- testing::InitGoogleTest(&argc, argv);
- return RUN_ALL_TESTS();
+int main(int argc, char **argv) {
+  ros::init(argc, argv, "tester");
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }

@@ -23,10 +23,10 @@
  ******************************************************************************/
 
 #include <sstream>
+#include "tf/transform_broadcaster.h"
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/DivideTwoNum.h"
-#include <tf/transform_broadcaster.h>
 
 /**
  * @brief divide -perfoms division operation
@@ -119,17 +119,18 @@ while (ros::ok()) {
      * of talker frame with respect to world frame 
      */
     tf::Transform transform;
-    transform.setOrigin( tf::Vector3(2,2,2) ); 
-    tf::Quaternion q;  
-    q.setRPY(10, 10, 10);  
-    transform.setRotation(q); 
+    transform.setOrigin(tf::Vector3(2, 2, 2));
+    tf::Quaternion q;
+    q.setRPY(10, 10, 10);
+    transform.setRotation(q);
 
     /*
      * Broadcast Frame of talker(child frame) with respect to some 
      * world frame(parent frame) for some time stamp
      */
     tf::TransformBroadcaster br;
-    br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talker"));
+    br.sendTransform(tf::StampedTransform(transform, ros::Time::now(),
+                                          "world", "talker"));
 
 	 /**
 	  * The publish() function is how you send messages. The parameter
