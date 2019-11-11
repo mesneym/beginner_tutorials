@@ -109,6 +109,19 @@ View pdf by entering the following
 evince frames.pdf
 ```
 
+### Rostest
+To run test follow the instuctions below:
+
+In your catkin workspace enter the following
+```
+catkin_make run_test_beginner_tutorials
+```
+
+Add package to workspace and enter the following to run test
+```
+rostest beginner_tutorials test.launch
+```
+Refer to rostest.png in the result folder for the expected output
 
 
 ### Record and Play Topics
