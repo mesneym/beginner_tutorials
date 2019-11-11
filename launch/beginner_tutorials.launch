@@ -1,5 +1,11 @@
 <launch>
  <arg name="freq" default="10"/>
+ <arg name="record" default="false"/>
  <node pkg="beginner_tutorials" type="talker" name="talker" args="$(arg freq)"/>
  <node pkg="beginner_tutorials" type="listener" name="listener"/>
+ <node pkg="rosbag" 
+  type="record" 
+  name="rosbagAllTopics"  
+  args="-a --output-name=$(find beginner_tutorials)/results/record"
+  if="$(eval record)"/>
 </launch>
