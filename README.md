@@ -91,14 +91,16 @@ Enter the command below to view information on the published messages recorded
   rosbag info record.bag
 ```
 
-To play recorded messages, open two terminals, add package to workspace and run
-instructions in the different terminals.
+To play recorded messages, open terminal, add package to workspace and follow the instructions
+given below  
 
-
+Run listener node
 ```
 rosrun beginner_tutorials listner
 ```
 
+Open a new terminal to, add package to workspace and enter the following to play recorded
+messages  
 ```
 rosbag play record.bag
 
