@@ -73,3 +73,36 @@ open a new terminal and enter the following
 ```
 rosrun rqt_logger_level rqt_logger_level
 ```
+
+
+### Record and Play Topics
+To record published messages and play them at a later time, create a new terminal, add   
+package to workspace and follow the instructions below.
+
+```
+  cd ~/catkin_ws
+  roslaunch beginner_tutorials beginner_tutorials.launch record:=true
+
+```
+Wait for 15sec and terminate program  
+
+Enter the command below to view information on the published messages recorded
+```
+  rosbag info record.bag
+```
+
+To play recorded messages, open two terminals, add package to workspace and run
+instructions in the different terminals.
+
+
+```
+rosrun beginner_tutorials listner
+```
+
+```
+rosbag play record.bag
+
+```
+Verify messages received by listner node
+
+
