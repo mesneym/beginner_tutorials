@@ -88,7 +88,7 @@ View matrix representation of frames, enter the following
 ```
 rosrun tf tf-echo /world /talker
 ```
-This gives the talk coordinates with respect to the world frame   
+This gives the talker frame coordinates with respect to the world frame   
 
 To get a graphical representation of TF, open a new terminal, add package to 
 workspace and follow the instructions given below

@@ -24,6 +24,13 @@
  ## Build talker and listener
  include_directories(include ${catkin_INCLUDE_DIRS})
  
+ if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest_gtest(test_talker test/test.launch test/test.cpp)
+  target_link_libraries(test_talker ${catkin_LIBRARIES})
+  add_dependencies(test_talker talker ${catkin_EXPORTED_TARGETS})
+ endif()
+
  add_executable(talker src/talker.cpp)
  target_link_libraries(talker ${catkin_LIBRARIES})
  add_dependencies(talker beginner_tutorials_generate_messages_cpp)
